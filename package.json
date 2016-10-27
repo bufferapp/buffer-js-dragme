@@ -1,0 +1,24 @@
+{
+  "name": "@bufferapp/dragme",
+  "version": "0.1.0",
+  "description": "A module for dragging components",
+  "main": "dragme.js",
+  "author": "Emily Plummer <emily@buffer.com>",
+  "homepage": "https://github.com/bufferapp/dragme#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bufferapp/dragme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bufferapp/dragme/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "object-assign": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0"
+  }
+}
