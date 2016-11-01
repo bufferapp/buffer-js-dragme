@@ -6,7 +6,7 @@ var DragMe = function(el, options) {
   options = options || {};
 
   this.options = Object.assign(defaults, options);
-
+  this.isDragging = false;
   this.el = el;
   this.body = document.body;
   this.onMousedown = this.onMousedown.bind(this);
@@ -26,7 +26,7 @@ var DragMe = function(el, options) {
 DragMe.prototype.onMousedown = function(e) {
   var style;
   var coords;
-
+  this.isDragging = true;
   if (this.options.cancel && this.shouldCancel(e.target)) {
     return;
   }
@@ -49,12 +49,15 @@ DragMe.prototype.onMousedown = function(e) {
 DragMe.prototype.onMove = function(e) {
   var x = this.origX - this.dragStartX + e.pageX;
   var y = this.origY - this.dragStartY + e.pageY;
+  if (this.isDragging) e.target.classList.add('ui-dragging');
 
   this.el.style[this.transform] = 'translate(' + x + 'px,' + y + 'px)';
 };
 
 
-DragMe.prototype.release = function() {
+DragMe.prototype.release = function(e) {
+  this.isDragging = false;
+  e.target.classList.remove('ui-dragging');
   this.body.removeEventListener('mousemove', this.onMove);
   this.body.removeEventListener('mouseup', this.release);
   this.body.removeEventListener('mouseleave', this.release);
