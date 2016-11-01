@@ -9,7 +9,6 @@ var DragMe = function(el, options) {
 
   this.el = el;
   this.body = document.body;
-  debugger;
   this.onMousedown = this.onMousedown.bind(this);
   this.onMove = this.onMove.bind(this);
   this.release = this.release.bind(this);
