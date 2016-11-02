@@ -49,7 +49,7 @@ DragMe.prototype.onMousedown = function(e) {
 DragMe.prototype.onMove = function(e) {
   var x = this.origX - this.dragStartX + e.pageX;
   var y = this.origY - this.dragStartY + e.pageY;
-  e.target.classList.add('ui-dragging');
+  if (this.el.contains(e.target)) e.target.classList.add('ui-dragging');
 
   this.el.style[this.transform] = 'translate(' + x + 'px,' + y + 'px)';
 };
