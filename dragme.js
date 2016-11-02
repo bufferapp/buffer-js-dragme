@@ -56,7 +56,7 @@ DragMe.prototype.onMove = function(e) {
 
 
 DragMe.prototype.release = function(e) {
-  e.target.classList.remove('ui-dragging');
+  if (e.target.classList.contains('ui-dragging') e.target.classList.remove('ui-dragging');
   this.body.removeEventListener('mousemove', this.onMove);
   this.body.removeEventListener('mouseup', this.release);
   this.body.removeEventListener('mouseleave', this.release);
