@@ -6,6 +6,7 @@ var DragMe = function(el, options) {
   options = options || {};
 
   this.options = Object.assign(defaults, options);
+
   this.el = el;
   this.body = document.body;
   this.onMousedown = this.onMousedown.bind(this);
@@ -25,6 +26,7 @@ var DragMe = function(el, options) {
 DragMe.prototype.onMousedown = function(e) {
   var style;
   var coords;
+
   if (this.options.cancel && this.shouldCancel(e.target)) {
     return;
   }
