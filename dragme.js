@@ -49,14 +49,14 @@ DragMe.prototype.onMousedown = function(e) {
 DragMe.prototype.onMove = function(e) {
   var x = this.origX - this.dragStartX + e.pageX;
   var y = this.origY - this.dragStartY + e.pageY;
-  e.target.classList.add('ui-dragging');
+  this.el.classList.add('ui-dragging');
 
   this.el.style[this.transform] = 'translate(' + x + 'px,' + y + 'px)';
 };
 
 
 DragMe.prototype.release = function(e) {
-  e.target.classList.remove('ui-dragging');
+  this.el.classList.remove('ui-dragging');
   this.body.removeEventListener('mousemove', this.onMove);
   this.body.removeEventListener('mouseup', this.release);
   this.body.removeEventListener('mouseleave', this.release);
