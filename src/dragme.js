@@ -1,3 +1,12 @@
+/**
+ * Small utility to drag elements around.
+ *
+ * @param {string} el - the element to make draggable
+ * @param {object} options
+ * @param {string} options.cancel - CSS selector that matches some children of el
+ *        on which to prevent dragging
+ */
+
 const DragMe = function(el, options) {
   const defaults = {
     cancel: null,
