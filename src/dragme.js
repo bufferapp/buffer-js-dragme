@@ -24,8 +24,7 @@ class DragMe {
     this.el = el;
     this.body = document.body;
 
-    this.el.classList.add('ui-draggable');
-    this.el.addEventListener('mousedown', this.onMousedown);
+    this.setup();
 
     ['mozTransform', 'msTransform', 'oTransform', 'webkitTransform', 'transform'].forEach((prop) => {
       if (prop in document.documentElement.style) {
@@ -36,6 +35,16 @@ class DragMe {
 
   shouldCancel(target) {
     return target.closest(this.options.cancel);
+  }
+
+  setup() {
+    this.el.classList.add('ui-draggable');
+    this.el.addEventListener('mousedown', this.onMousedown);
+  }
+
+  cleanup() {
+    this.el.classList.remove('ui-draggable');
+    this.el.removeEventListener('mousedown', this.onMousedown);
   }
 
   onMousedown = (e) => {
