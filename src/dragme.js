@@ -5,12 +5,16 @@
  * @param {object} options
  * @param {string} options.cancel - CSS selector that matches some children of el
  *        on which to prevent dragging
+ * @param {function} options.onDragStart
+ * @param {function} options.onDragEnd
  */
 
 class DragMe {
   constructor(el, options) {
     const defaults = {
       cancel: null,
+      onDragStart: null,
+      onDragEnd: null,
     };
 
     options = options || {};
@@ -51,6 +55,8 @@ class DragMe {
     this.body.addEventListener('mousemove', this.onMove);
     this.body.addEventListener('mouseup', this.release);
     this.body.addEventListener('mouseleave', this.release);
+
+    if (this.options.onDragStart) this.didExecuteOnDragStart = false;
   };
 
   onMove = (e) => {
@@ -59,6 +65,11 @@ class DragMe {
 
     this.el.classList.add('ui-dragging');
     this.el.style[this.transform] = `translate(${x}px, ${y}px)`;
+
+    if (this.options.onDragStart && !this.didExecuteOnDragStart) {
+      this.options.onDragStart();
+      this.didExecuteOnDragStart = true;
+    }
   };
 
   release = () => {
@@ -67,6 +78,8 @@ class DragMe {
     this.body.removeEventListener('mousemove', this.onMove);
     this.body.removeEventListener('mouseup', this.release);
     this.body.removeEventListener('mouseleave', this.release);
+
+    if (this.options.onDragEnd && this.didExecuteOnDragStart) this.options.onDragEnd();
   };
 }
 
