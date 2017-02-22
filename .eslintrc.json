@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "func-names": 0,
+    "no-param-reassign": 0,
+    "max-len": ["error", {
+      "code": 100,
+      "ignorePattern": "(`|')[^\\1]{70,}\\1"
+    }],
+    "no-mixed-operators": ["error", { "allowSamePrecedence": true }],
+    "space-before-function-paren": ["error", "never"]
+  }
+}
