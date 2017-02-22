@@ -19,14 +19,29 @@ npm install @bufferapp/dragme
 ## Usage
 
 ```js
-new DragMe(document.querySelector('#draggable-component'));
+const dragMe = new DragMe(document.querySelector('#draggable-component'));
 ```
 
 Prevent dragging on certain elements:
 
 ```js
-new DragMe(document.querySelector('#draggable-component'), {
+const dragMe = new DragMe(document.querySelector('#draggable-component'), {
   cancel: 'textarea, .button',
+});
+```
+
+Cleanup bindings to disable a DragMe instance:
+
+```js
+dragMe.cleanup();
+```
+
+Listen to when dragging starts and stops using callbacks:
+
+```js
+const dragMe = new DragMe(document.querySelector('#draggable-component'), {
+  onDragStart: () => console.log('Started dragging'),
+  onDragEnd: () => console.log('Stopped dragging'),
 });
 ```
 
