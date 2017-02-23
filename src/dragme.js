@@ -5,7 +5,7 @@
  * @param {object} options
  * @param {string} options.cancel - CSS selector that matches some children of el
  *        on which to prevent dragging
- * @param {function} options.onDragStart
+ * @param {function} options.onDragStart - gets passed the target element as first argument
  * @param {function} options.onDragEnd
  */
 
@@ -76,7 +76,7 @@ class DragMe {
     this.el.style[this.transform] = `translate(${x}px, ${y}px)`;
 
     if (this.options.onDragStart && !this.didExecuteOnDragStart) {
-      this.options.onDragStart();
+      this.options.onDragStart(e.target);
       this.didExecuteOnDragStart = true;
     }
   };
